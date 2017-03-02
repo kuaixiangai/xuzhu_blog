@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>蒯翔博客</title>
   <subtitle>虚竹Blog</subtitle>
-  <link href="/atom.xml" rel="self"/>
+  <link href="/xuzhu_blog/atom.xml" rel="self"/>
   
   <link href="http://blog.geekap.com/"/>
   <updated>2017-01-11T07:26:46.631Z</updated>
