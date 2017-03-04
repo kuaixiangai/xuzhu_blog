@@ -5,7 +5,7 @@
   <link href="/xuzhu_blog/atom.xml" rel="self"/>
   
   <link href="http://blog.geekap.com/"/>
-  <updated>2017-03-04T09:57:22.523Z</updated>
+  <updated>2017-03-04T10:01:40.232Z</updated>
   <id>http://blog.geekap.com/</id>
   
   <author>
@@ -16,11 +16,51 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>前端之Angularjs过滤器</title>
+    <link href="http://blog.geekap.com/2017/01/06/Angular%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://blog.geekap.com/2017/01/06/Angular基础学习笔记/</id>
+    <published>2017-01-06T01:12:21.000Z</published>
+    <updated>2017-03-04T10:01:40.232Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="angular过滤器"><a href="#angular过滤器" class="headerlink" title="angular过滤器"></a><strong>angular过滤器</strong></h2><p>通用格式:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123; data* | filter:options* &#125;&#125;</div></pre></td></tr></table></figure></p>
+<p>data:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;&apos;13881234412323&apos; | data:&apos;MM/dd/yyyy @ h:mma&apos;&#125;&#125;</div></pre></td></tr></table></figure></p>
+<p>大小写转换:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;&apos;octagon gem&apos; | uppercase&#125;&#125;</div></pre></td></tr></table></figure></p>
+<p>限制字符输出的数量:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;&apos;My Description&apos; | limitTo:8&#125;&#125;</div></pre></td></tr></table></figure></p>
+<p>限制数组出的数量:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;li ng-repeat=&quot;product in store.products | limitTo:3&quot;&gt;&lt;/li&gt;</div></pre></td></tr></table></figure></p>
+<p>对输出结果进行从高到低排序:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;li ng-repeat=&quot;product in store.products | orderBy:&apos;-price&apos;&quot;&gt;&lt;/li&gt;  ##如果没有负号即是从低到高排序.</div></pre></td></tr></table></figure></p>
+<h2 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h2><p>eg:<br>自定义一个 ng-btn</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;p ng-btn&gt;Hello!&lt;/p&gt;</div></pre></td></tr></table></figure>
+<p>在加入参数的时候”-“要取消，并且，后面的一位大写。</p>
+<h2 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h2><p>为什么需要MVC?<br>代码规模越来越大，切分职责是大势所趋。<br>为了复用：很多逻辑的一模一样的。<br>为了后期维护方便：修改一块功能不影响其他功能。</p>
+<p>但是MVC只是手段，终极目标是模块化和复用。</p>
+<p>Controller<br>不要试图去复用Controller,一个控制器只负责一小块试图</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;angular过滤器&quot;&gt;&lt;a href=&quot;#angular过滤器&quot; class=&quot;headerlink&quot; title=&quot;angular过滤器&quot;&gt;&lt;/a&gt;&lt;strong&gt;angular过滤器&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;通用格式:&lt;br&gt;&lt;figure clas
+    
+    </summary>
+    
+      <category term="前端框架之Angular" scheme="http://blog.geekap.com/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%E4%B9%8BAngular/"/>
+    
+    
+      <category term="教程" scheme="http://blog.geekap.com/tags/%E6%95%99%E7%A8%8B/"/>
+    
+      <category term="linux" scheme="http://blog.geekap.com/tags/linux/"/>
+    
+      <category term="Nginx" scheme="http://blog.geekap.com/tags/Nginx/"/>
+    
+      <category term="安装" scheme="http://blog.geekap.com/tags/%E5%AE%89%E8%A3%85/"/>
+    
+  </entry>
+  
+  <entry>
     <title>CentOS 7.3 安装 Nginx</title>
     <link href="http://blog.geekap.com/2017/01/06/CentOS%207%20%E5%AE%89%E8%A3%85%20Nginx/"/>
     <id>http://blog.geekap.com/2017/01/06/CentOS 7 安装 Nginx/</id>
     <published>2017-01-06T01:12:21.000Z</published>
-    <updated>2017-03-04T09:57:22.523Z</updated>
+    <updated>2017-03-04T10:00:45.623Z</updated>
     
     <content type="html"><![CDATA[<!-- excerpt --></p>
 <h2 id="为什么选择Nginx"><a href="#为什么选择Nginx" class="headerlink" title="为什么选择Nginx?"></a><strong>为什么选择Nginx?</strong></h2><p>Nginx 是一个很牛的高性能Web和反向代理服务器, 它具有很多非常优越的特性:</p>
@@ -57,46 +97,6 @@
     <summary type="html">
     
       &lt;p&gt;Nginx 是一个很牛的高性能Web和反向代理服务器, 它具有很多非常优越的特性:&lt;br&gt;
-    
-    </summary>
-    
-      <category term="服务器" scheme="http://blog.geekap.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
-    
-      <category term="教程" scheme="http://blog.geekap.com/tags/%E6%95%99%E7%A8%8B/"/>
-    
-      <category term="linux" scheme="http://blog.geekap.com/tags/linux/"/>
-    
-      <category term="Nginx" scheme="http://blog.geekap.com/tags/Nginx/"/>
-    
-      <category term="安装" scheme="http://blog.geekap.com/tags/%E5%AE%89%E8%A3%85/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CentOS 7.3 安装 Nginx</title>
-    <link href="http://blog.geekap.com/2017/01/06/Angular%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>http://blog.geekap.com/2017/01/06/Angular基础学习笔记/</id>
-    <published>2017-01-06T01:12:21.000Z</published>
-    <updated>2017-03-04T09:59:35.569Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="angular过滤器"><a href="#angular过滤器" class="headerlink" title="angular过滤器"></a><strong>angular过滤器</strong></h2><p>通用格式:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123; data* | filter:options* &#125;&#125;</div></pre></td></tr></table></figure></p>
-<p>data:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;&apos;13881234412323&apos; | data:&apos;MM/dd/yyyy @ h:mma&apos;&#125;&#125;</div></pre></td></tr></table></figure></p>
-<p>大小写转换:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;&apos;octagon gem&apos; | uppercase&#125;&#125;</div></pre></td></tr></table></figure></p>
-<p>限制字符输出的数量:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;&apos;My Description&apos; | limitTo:8&#125;&#125;</div></pre></td></tr></table></figure></p>
-<p>限制数组出的数量:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;li ng-repeat=&quot;product in store.products | limitTo:3&quot;&gt;&lt;/li&gt;</div></pre></td></tr></table></figure></p>
-<p>对输出结果进行从高到低排序:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;li ng-repeat=&quot;product in store.products | orderBy:&apos;-price&apos;&quot;&gt;&lt;/li&gt;  ##如果没有负号即是从低到高排序.</div></pre></td></tr></table></figure></p>
-<h2 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h2><p>eg:<br>自定义一个 ng-btn</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;p ng-btn&gt;Hello!&lt;/p&gt;</div></pre></td></tr></table></figure>
-<p>在加入参数的时候”-“要取消，并且，后面的一位大写。</p>
-<h2 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h2><p>为什么需要MVC?<br>代码规模越来越大，切分职责是大势所趋。<br>为了复用：很多逻辑的一模一样的。<br>为了后期维护方便：修改一块功能不影响其他功能。</p>
-<p>但是MVC只是手段，终极目标是模块化和复用。</p>
-<p>Controller<br>不要试图去复用Controller,一个控制器只负责一小块试图</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;angular过滤器&quot;&gt;&lt;a href=&quot;#angular过滤器&quot; class=&quot;headerlink&quot; title=&quot;angular过滤器&quot;&gt;&lt;/a&gt;&lt;strong&gt;angular过滤器&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;通用格式:&lt;br&gt;&lt;figure clas
     
     </summary>
     
