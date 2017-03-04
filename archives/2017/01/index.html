@@ -212,56 +212,6 @@
     <section class="postShorten-group main-content-wrap">
     
     
-    <article class="postShorten postShorten--thumbnailimg-top" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-                <a href="/xuzhu_blog/2017/01/07/tranquilpeak主题的配置/">
-                    <div class="postShorten-thumbnailimg">
-                        <img alt="" itemprop="image" src="http://upyun.geekap.com/gitblog-img/city-750.jpg"/>
-                    </div>
-                </a>
-                
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/xuzhu_blog/2017/01/07/tranquilpeak主题的配置/">
-                            tranquilpeak主题的配置
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2017-01-07T17:12:21+08:00">
-	
-		    1月 07, 2017
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/xuzhu_blog/categories/建站/">建站</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-excerpt" itemprop="articleBody">
-                    <p>之前讲了如何利用Hexo在github上建立blog,以及如何更换主题，步骤并不复杂，但是配置主题可是就没那么简单了。<br>
-                    
-                        <a href="/xuzhu_blog/2017/01/07/tranquilpeak主题的配置/" class="postShorten-excerpt_link link">
-                            Continue reading
-                        </a>
-                        
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
     <article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
         <div class="postShorten-wrap">
             
@@ -312,27 +262,27 @@
     </article>
     
     
-    <article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
+    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
         <div class="postShorten-wrap">
             
             <div class="postShorten-header">
                 <h1 class="postShorten-title" itemprop="headline">
                     
-                        <a class="link-unstyled" href="/xuzhu_blog/2017/01/02/博客建设分享以及学习规划/">
-                            博客建设分享及博客计划
+                        <a class="link-unstyled" href="/xuzhu_blog/2017/01/06/Angular基础学习笔记/">
+                            CentOS 7.3 安装 Nginx
                         </a>
                     
                 </h1>
                 <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2017-01-02T17:12:21+08:00">
+    <time itemprop="datePublished" datetime="2017-01-06T09:12:21+08:00">
 	
-		    1月 02, 2017
+		    1月 06, 2017
     	
     </time>
     
         <span>in </span>
         
-    <a class="category-link" href="/xuzhu_blog/categories/建站/">建站</a>
+    <a class="category-link" href="/xuzhu_blog/categories/Linux/">Linux</a>
 
 
     
@@ -340,24 +290,33 @@
 
             </div>
             
-                <div class="postShorten-excerpt" itemprop="articleBody">
-                    <p>经过几天的折腾，终于把github以及github-pages熟悉了一遍，并且在2017新年第一天成功的把博客系统运行在github-pages上。<br>
+                <div class="postShorten-content" itemprop="articleBody">
+                    <h2 id="angular过滤器"><a href="#angular过滤器" class="headerlink" title="angular过滤器"></a><strong>angular过滤器</strong></h2><p>通用格式:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123; data* | filter:options* &#125;&#125;</div></pre></td></tr></table></figure></p>
+<p>data:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;&apos;13881234412323&apos; | data:&apos;MM/dd/yyyy @ h:mma&apos;&#125;&#125;</div></pre></td></tr></table></figure></p>
+<p>大小写转换:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;&apos;octagon gem&apos; | uppercase&#125;&#125;</div></pre></td></tr></table></figure></p>
+<p>限制字符输出的数量:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;&apos;My Description&apos; | limitTo:8&#125;&#125;</div></pre></td></tr></table></figure></p>
+<p>限制数组出的数量:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;li ng-repeat=&quot;product in store.products | limitTo:3&quot;&gt;&lt;/li&gt;</div></pre></td></tr></table></figure></p>
+<p>对输出结果进行从高到低排序:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;li ng-repeat=&quot;product in store.products | orderBy:&apos;-price&apos;&quot;&gt;&lt;/li&gt;  ##如果没有负号即是从低到高排序.</div></pre></td></tr></table></figure></p>
+<h2 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h2><p>eg:<br>自定义一个 ng-btn</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;p ng-btn&gt;Hello!&lt;/p&gt;</div></pre></td></tr></table></figure>
+<p>在加入参数的时候”-“要取消，并且，后面的一位大写。</p>
+<h2 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h2><p>为什么需要MVC?<br>代码规模越来越大，切分职责是大势所趋。<br>为了复用：很多逻辑的一模一样的。<br>为了后期维护方便：修改一块功能不影响其他功能。</p>
+<p>但是MVC只是手段，终极目标是模块化和复用。</p>
+<p>Controller<br>不要试图去复用Controller,一个控制器只负责一小块试图</p>
+
                     
-                        <a href="/xuzhu_blog/2017/01/02/博客建设分享以及学习规划/" class="postShorten-excerpt_link link">
-                            Continue reading
-                        </a>
                         
+                    
+                    
+                        <p>
+                            <a href="/xuzhu_blog/2017/01/06/Angular基础学习笔记/#post-footer" class="postShorten-excerpt_link link">
+                                Comment and share
+                            </a>
+                        </p>
                     
                 </div>
             
         </div>
-        
-            <a href="/xuzhu_blog/2017/01/02/博客建设分享以及学习规划/">
-                <div class="postShorten-thumbnailimg">
-                    <img alt="" itemprop="image" src="http://upyun.geekap.com/gitblog-img/car-6-140.jpg"/>
-                </div>
-            </a>
-            
         
     </article>
     
@@ -442,31 +401,6 @@
                 <div class="media">
                     
                     <div class="media-left">
-                        <a class="link-unstyled" href="http://blog.geekap.com/xuzhu_blog/2017/01/02/博客建设分享以及学习规划/">
-                            <img class="media-image" src="http://upyun.geekap.com/gitblog-img/car-6-140.jpg" width="90" height="90"/>
-                        </a>
-                    </div>
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://blog.geekap.com/xuzhu_blog/2017/01/02/博客建设分享以及学习规划/">
-                            <h3 class="media-heading">博客建设分享及博客计划</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2017年1月2日
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"><p>经过几天的折腾，终于把github以及github-pages熟悉了一遍，并且在2017新年第一天成功的把博客系统运行在github-pages上。<br></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-left">
                         <a class="link-unstyled" href="http://blog.geekap.com/xuzhu_blog/2017/01/06/CentOS 7 安装 Nginx/">
                             <img class="media-image" src="http://upyun.geekap.com/gitblog-img/city-140.jpg" width="90" height="90"/>
                         </a>
@@ -491,39 +425,14 @@
                 
                 <div class="media">
                     
-                    <div class="media-left">
-                        <a class="link-unstyled" href="http://blog.geekap.com/xuzhu_blog/2017/01/07/tranquilpeak主题的配置/">
-                            <img class="media-image" src="http://upyun.geekap.com/gitblog-img/city-750.jpg" width="90" height="90"/>
-                        </a>
-                    </div>
-                    
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://blog.geekap.com/xuzhu_blog/2017/01/07/tranquilpeak主题的配置/">
-                            <h3 class="media-heading">tranquilpeak主题的配置</h3>
+                        <a class="link-unstyled" href="http://blog.geekap.com/xuzhu_blog/2017/01/06/Angular基础学习笔记/">
+                            <h3 class="media-heading">CentOS 7.3 安装 Nginx</h3>
                         </a>
                         <span class="media-meta">
                             <span class="media-date text-small">
                                 
-                                    2017年1月7日
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"><p>之前讲了如何利用Hexo在github上建立blog,以及如何更换主题，步骤并不复杂，但是配置主题可是就没那么简单了。<br></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://blog.geekap.com/xuzhu_blog/2017/02/08/Angular基础学习笔记/">
-                            <h3 class="media-heading"></h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2017年2月8日
+                                    2017年1月6日
                                 
                             </span>
                         </span>
@@ -540,7 +449,7 @@
                 data-message-zero="no post found"
                 data-message-one="1 post found"
                 data-message-other="{n} posts found">
-                4 posts found
+                2 posts found
             </p>
         </div>
     </div>
