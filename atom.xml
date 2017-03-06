@@ -60,7 +60,7 @@
     <link href="http://blog.geekap.com/2017/01/06/CentOS%207%20%E5%AE%89%E8%A3%85%20Nginx/"/>
     <id>http://blog.geekap.com/2017/01/06/CentOS 7 安装 Nginx/</id>
     <published>2017-01-06T01:12:21.000Z</published>
-    <updated>2017-03-06T08:10:53.504Z</updated>
+    <updated>2017-03-06T08:14:00.175Z</updated>
     
     <content type="html"><![CDATA[<!-- excerpt --></p>
 <h2 id="为什么选择Nginx"><a href="#为什么选择Nginx" class="headerlink" title="为什么选择Nginx?"></a><strong>为什么选择Nginx?</strong></h2><p>Nginx 是一个很牛的高性能Web和反向代理服务器, 它具有很多非常优越的特性:</p>
