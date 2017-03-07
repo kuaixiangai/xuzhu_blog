@@ -4,9 +4,9 @@
   <subtitle>虚竹Blog</subtitle>
   <link href="/xuzhu_blog/atom.xml" rel="self"/>
   
-  <link href="http://blog.geekap.com/"/>
-  <updated>2017-03-04T10:01:40.232Z</updated>
-  <id>http://blog.geekap.com/</id>
+  <link href="https://kuaixiangai.github.io/"/>
+  <updated>2017-03-07T09:19:47.625Z</updated>
+  <id>https://kuaixiangai.github.io/</id>
   
   <author>
     <name>虚竹</name>
@@ -16,9 +16,67 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>CentOS 7.3 安装 Nginx</title>
+    <link href="https://kuaixiangai.github.io/2017/01/06/CentOS%207%20%E5%AE%89%E8%A3%85%20Nginx/"/>
+    <id>https://kuaixiangai.github.io/2017/01/06/CentOS 7 安装 Nginx/</id>
+    <published>2017-01-06T01:12:21.000Z</published>
+    <updated>2017-03-07T09:19:47.625Z</updated>
+    
+    <content type="html"><![CDATA[<!-- excerpt --></p>
+<h2 id="为什么选择Nginx"><a href="#为什么选择Nginx" class="headerlink" title="为什么选择Nginx?"></a><strong>为什么选择Nginx?</strong></h2><p>Nginx 是一个很牛的高性能Web和反向代理服务器, 它具有很多非常优越的特性:</p>
+<ul>
+<li>在高连接并发的情况下，Nginx是Apache服务器不错的替代品</li>
+<li>Nginx作为负载均衡服务器</li>
+<li>作为邮件代理服务器</li>
+<li>Nginx 是一个安装非常的简单 , 配置文件非常简洁还能够支持perl语法,Bugs非常少的服务器.</li>
+</ul>
+<h2 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a><strong>测试环境</strong></h2><ul>
+<li>windows 10 专业版 1607</li>
+<li>VirtualBox 5.1.12 r112440 (Qt5.6.2)</li>
+<li>CentOS release 7.3.1611</li>
+<li>Nginx 1.11.8</li>
+</ul>
+<h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a><strong>安装依赖</strong></h2><p>首先由于nginx的一些模块依赖一些lib库，所以在安装nginx之前，必须先安装这些lib库，这些依赖库主要有g++、gcc、openssl-devel、pcre-devel和zlib-devel 所以执行如下命令安装:<br> <figure class="codeblock codeblock--tabbed"><figcaption><span>依赖安装</span><ul class="tabs"><li class="tab active">nginx</li></ul></figcaption><div class="tabs-content"><figure class="highlight" style="display: block;"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$   yum install gcc-c++</span><br><span class="line"></span><br><span class="line">$   yum install pcre pcre-devel </span><br><span class="line"></span><br><span class="line">$   yum install zlib zlib-devel  </span><br><span class="line"></span><br><span class="line">$   yum install openssl openssl--devel</span><br></pre></td></tr></tbody></table></figure></div></figure></p>
+<p>或者简单点一起安装:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$   yum -y install make zlib zlib-devel gcc-c++ libtool  openssl openssl-devel</div></pre></td></tr></table></figure></p>
+<h2 id="源码方式安装Nginx"><a href="#源码方式安装Nginx" class="headerlink" title="源码方式安装Nginx"></a><strong>源码方式安装Nginx</strong></h2><p>首先进入/usr/local目录<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$  <span class="built_in">cd</span> /usr/<span class="built_in">local</span></div></pre></td></tr></table></figure></p>
+<p>从官网下载最新版的nginx<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$   wget http://nginx.org/download/nginx-1.11.8.tar.gz</div></pre></td></tr></table></figure></p>
+<p>解压nginx压缩包<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$   tar -zxvf nginx-1.11.8.tar.gz</div></pre></td></tr></table></figure></p>
+<p>会产生一个nginx-1.11.8 目录，这时进入nginx-1.11.8目录<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$   <span class="built_in">cd</span>  nginx-1.11.8</div></pre></td></tr></table></figure></p>
+<p>接下来安装，可以使用–prefix参数指定nginx安装的目录,make、make install安装<br><figure class="codeblock codeblock--tabbed"><figcaption><a href="http://blog.geekap.com" target="_blank" rel="external">Nginx安装</a><ul class="tabs"><li class="tab active">nginx</li></ul></figcaption><div class="tabs-content"><figure class="highlight" style="display: block;"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$   ./configure   # 默认安装在/usr/local/nginx-1.11.8</span><br><span class="line"></span><br><span class="line">$   make  </span><br><span class="line"></span><br><span class="line">$   make install</span><br></pre></td></tr></tbody></table></figure></div></figure></p>
+<p>或者用yum的方式安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$  yum install -y nginx</div></pre></td></tr></table></figure></p>
+<h2 id="配置防火墙-开启80端口"><a href="#配置防火墙-开启80端口" class="headerlink" title="配置防火墙 开启80端口"></a><strong>配置防火墙 开启80端口</strong></h2><p>nginx默认端口为80端口，但CentOS 7.2默认不开启80端口，需要手动添加80端口的权限。由于centos 7版本以后默认使用firewalld后，网上关于iptables的设置方法已经不管用了，所以根本就别想用配置iptables做啥，根本没用。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$   firewall-cmd --zone=public --add-port=80/tcp --permanent</div></pre></td></tr></table></figure></p>
+<p>别忘了更新防火墙的配置：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$   firewall-cmd --reload</div></pre></td></tr></table></figure></p>
+<p>重启nginx<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$   nginx <span class="_">-s</span> reload</div></pre></td></tr></table></figure></p>
+<h2 id="完成"><a href="#完成" class="headerlink" title="完成"></a><strong>完成</strong></h2><p>打开浏览器访问Linux的IP，就可以看到 nginx的欢迎页了Welcome to nginx!</p>
+<h2 id="可能用到的命令："><a href="#可能用到的命令：" class="headerlink" title="可能用到的命令："></a><strong>可能用到的命令：</strong></h2><p>查看ip地址命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$   ip addr</div></pre></td></tr></table></figure></p>
+<p>安装telnet客户端<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$   yum install telnet</div></pre></td></tr></table></figure></p>
+<p>安装telnet服务端<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$   yum install telnet-server</div></pre></td></tr></table></figure></p>
+<p>安装wget<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$   yum -y install wget</div></pre></td></tr></table></figure></p>
+<p>安装ifconfig<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$   yum install net-tools</div></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Nginx 是一个很牛的高性能Web和反向代理服务器, 它具有很多非常优越的特性:&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="https://kuaixiangai.github.io/categories/Linux/"/>
+    
+    
+      <category term="教程" scheme="https://kuaixiangai.github.io/tags/%E6%95%99%E7%A8%8B/"/>
+    
+      <category term="linux" scheme="https://kuaixiangai.github.io/tags/linux/"/>
+    
+      <category term="Nginx" scheme="https://kuaixiangai.github.io/tags/Nginx/"/>
+    
+      <category term="安装" scheme="https://kuaixiangai.github.io/tags/%E5%AE%89%E8%A3%85/"/>
+    
+  </entry>
+  
+  <entry>
     <title>前端之Angularjs过滤器</title>
-    <link href="http://blog.geekap.com/2017/01/06/Angular%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>http://blog.geekap.com/2017/01/06/Angular基础学习笔记/</id>
+    <link href="https://kuaixiangai.github.io/2017/01/06/Angular%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>https://kuaixiangai.github.io/2017/01/06/Angular基础学习笔记/</id>
     <published>2017-01-06T01:12:21.000Z</published>
     <updated>2017-03-04T10:01:40.232Z</updated>
     
@@ -42,74 +100,16 @@
     
     </summary>
     
-      <category term="前端框架之Angular" scheme="http://blog.geekap.com/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%E4%B9%8BAngular/"/>
+      <category term="前端框架之Angular" scheme="https://kuaixiangai.github.io/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%E4%B9%8BAngular/"/>
     
     
-      <category term="教程" scheme="http://blog.geekap.com/tags/%E6%95%99%E7%A8%8B/"/>
+      <category term="教程" scheme="https://kuaixiangai.github.io/tags/%E6%95%99%E7%A8%8B/"/>
     
-      <category term="linux" scheme="http://blog.geekap.com/tags/linux/"/>
+      <category term="linux" scheme="https://kuaixiangai.github.io/tags/linux/"/>
     
-      <category term="Nginx" scheme="http://blog.geekap.com/tags/Nginx/"/>
+      <category term="Nginx" scheme="https://kuaixiangai.github.io/tags/Nginx/"/>
     
-      <category term="安装" scheme="http://blog.geekap.com/tags/%E5%AE%89%E8%A3%85/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CentOS 7.3 安装 Nginx</title>
-    <link href="http://blog.geekap.com/2017/01/06/CentOS%207%20%E5%AE%89%E8%A3%85%20Nginx/"/>
-    <id>http://blog.geekap.com/2017/01/06/CentOS 7 安装 Nginx/</id>
-    <published>2017-01-06T01:12:21.000Z</published>
-    <updated>2017-03-07T08:17:03.675Z</updated>
-    
-    <content type="html"><![CDATA[<!-- excerpt --></p>
-<h2 id="为什么选择Nginx"><a href="#为什么选择Nginx" class="headerlink" title="为什么选择Nginx?"></a><strong>为什么选择Nginx?</strong></h2><p>Nginx 是一个很牛的高性能Web和反向代理服务器, 它具有很多非常优越的特性:</p>
-<ul>
-<li>在高连接并发的情况下，Nginx是Apache服务器不错的替代品</li>
-<li>Nginx作为负载均衡服务器</li>
-<li>作为邮件代理服务器</li>
-<li>Nginx 是一个安装非常的简单 , 配置文件非常简洁还能够支持perl语法,Bugs非常少的服务器.</li>
-</ul>
-<h2 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a><strong>测试环境</strong></h2><ul>
-<li>windows 10 专业版 1607</li>
-<li>VirtualBox 5.1.12 r112440 (Qt5.6.2)</li>
-<li>CentOS release 7.3.1611</li>
-<li>Nginx 1.11.8</li>
-</ul>
-<h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a><strong>安装依赖</strong></h2><p>首先由于nginx的一些模块依赖一些lib库，所以在安装nginx之前，必须先安装这些lib库，这些依赖库主要有g++、gcc、openssl-devel、pcre-devel和zlib-devel 所以执行如下命令安装:<br> <figure class="codeblock codeblock--tabbed"><figcaption><a href="http://blog.geekap.com">依赖安装</a><ul class="tabs"><li class="tab active">nginx</li></ul></figcaption><div class="tabs-content"><figure class="highlight" style="display: block;"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$   yum install gcc-c++</span><br><span class="line"></span><br><span class="line">$   yum install pcre pcre-devel </span><br><span class="line"></span><br><span class="line">$   yum install zlib zlib-devel  </span><br><span class="line"></span><br><span class="line">$   yum install openssl openssl--devel</span><br></pre></td></tr></tbody></table></figure></div></figure></p>
-<p>或者简单点一起安装:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$   yum -y install make zlib zlib-devel gcc-c++ libtool  openssl openssl-devel</div></pre></td></tr></table></figure></p>
-<h2 id="源码方式安装Nginx"><a href="#源码方式安装Nginx" class="headerlink" title="源码方式安装Nginx"></a><strong>源码方式安装Nginx</strong></h2><p>首先进入/usr/local目录<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$  <span class="built_in">cd</span> /usr/<span class="built_in">local</span></div></pre></td></tr></table></figure></p>
-<p>从官网下载最新版的nginx<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$   wget http://nginx.org/download/nginx-1.11.8.tar.gz</div></pre></td></tr></table></figure></p>
-<p>解压nginx压缩包<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$   tar -zxvf nginx-1.11.8.tar.gz</div></pre></td></tr></table></figure></p>
-<p>会产生一个nginx-1.11.8 目录，这时进入nginx-1.11.8目录<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$   <span class="built_in">cd</span>  nginx-1.11.8</div></pre></td></tr></table></figure></p>
-<p>接下来安装，可以使用–prefix参数指定nginx安装的目录,make、make install安装<br><figure class="codeblock codeblock--tabbed"><figcaption><a href="http://blog.geekap.com">Nginx安装</a><ul class="tabs"><li class="tab active">nginx</li></ul></figcaption><div class="tabs-content"><figure class="highlight" style="display: block;"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$   ./configure   # 默认安装在/usr/local/nginx-1.11.8</span><br><span class="line"></span><br><span class="line">$   make  </span><br><span class="line"></span><br><span class="line">$   make install</span><br></pre></td></tr></tbody></table></figure></div></figure></p>
-<p>或者用yum的方式安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$  yum install -y nginx</div></pre></td></tr></table></figure></p>
-<h2 id="配置防火墙-开启80端口"><a href="#配置防火墙-开启80端口" class="headerlink" title="配置防火墙 开启80端口"></a><strong>配置防火墙 开启80端口</strong></h2><p>nginx默认端口为80端口，但CentOS 7.2默认不开启80端口，需要手动添加80端口的权限。由于centos 7版本以后默认使用firewalld后，网上关于iptables的设置方法已经不管用了，所以根本就别想用配置iptables做啥，根本没用。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$   firewall-cmd --zone=public --add-port=80/tcp --permanent</div></pre></td></tr></table></figure></p>
-<p>别忘了更新防火墙的配置：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$   firewall-cmd --reload</div></pre></td></tr></table></figure></p>
-<p>重启nginx<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$   nginx <span class="_">-s</span> reload</div></pre></td></tr></table></figure></p>
-<h2 id="完成"><a href="#完成" class="headerlink" title="完成"></a><strong>完成</strong></h2><p>打开浏览器访问Linux的IP，就可以看到 nginx的欢迎页了Welcome to nginx!</p>
-<h2 id="可能用到的命令："><a href="#可能用到的命令：" class="headerlink" title="可能用到的命令："></a><strong>可能用到的命令：</strong></h2><p>查看ip地址命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$   ip addr</div></pre></td></tr></table></figure></p>
-<p>安装telnet客户端<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$   yum install telnet</div></pre></td></tr></table></figure></p>
-<p>安装telnet服务端<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$   yum install telnet-server</div></pre></td></tr></table></figure></p>
-<p>安装wget<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$   yum -y install wget</div></pre></td></tr></table></figure></p>
-<p>安装ifconfig<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$   yum install net-tools</div></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Nginx 是一个很牛的高性能Web和反向代理服务器, 它具有很多非常优越的特性:&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://blog.geekap.com/categories/Linux/"/>
-    
-    
-      <category term="教程" scheme="http://blog.geekap.com/tags/%E6%95%99%E7%A8%8B/"/>
-    
-      <category term="linux" scheme="http://blog.geekap.com/tags/linux/"/>
-    
-      <category term="Nginx" scheme="http://blog.geekap.com/tags/Nginx/"/>
-    
-      <category term="安装" scheme="http://blog.geekap.com/tags/%E5%AE%89%E8%A3%85/"/>
+      <category term="安装" scheme="https://kuaixiangai.github.io/tags/%E5%AE%89%E8%A3%85/"/>
     
   </entry>
   
